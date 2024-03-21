@@ -3,45 +3,6 @@ import { CartItem } from "~/models/CartItem";
 import { Order } from "~/models/Order";
 import { AvailableProduct, Product } from "~/models/Product";
 
-// export const products: Product[] = [
-//   {
-//     description: "Short Product Description1",
-//     id: "7567ec4b-b10c-48c5-9345-fc73c48a80aa",
-//     price: 24,
-//     title: "Product 1",
-//   },
-//   {
-//     description: "Short Product Description7",
-//     id: "7567ec4b-b10c-48c5-9345-fc73c48a80a1",
-//     price: 15,
-//     title: "Product 2",
-//   },
-//   {
-//     description: "Short Product Description2",
-//     id: "7567ec4b-b10c-48c5-9345-fc73c48a80a3",
-//     price: 23,
-//     title: "Product 3",
-//   },
-//   {
-//     description: "Short Product Description4",
-//     id: "7567ec4b-b10c-48c5-9345-fc73348a80a1",
-//     price: 15,
-//     title: "Product 4",
-//   },
-//   {
-//     description: "Short Product Descriptio1",
-//     id: "7567ec4b-b10c-48c5-9445-fc73c48a80a2",
-//     price: 23,
-//     title: "Product 5",
-//   },
-//   {
-//     description: "Short Product Description7",
-//     id: "7567ec4b-b10c-45c5-9345-fc73c48a80a1",
-//     price: 15,
-//     title: "Product 6",
-//   },
-// ];
-
 async function fetchProducts() {
   try {
     const response = await fetch(
@@ -55,7 +16,7 @@ async function fetchProducts() {
 
     if (response.ok) {
       const products = await response.json();
-      console.log("products: ", products);
+
       return products;
     } else {
       throw new Error("Failed to fetch products");
@@ -67,7 +28,6 @@ async function fetchProducts() {
 }
 
 export const products = await fetchProducts();
-console.log(products);
 
 export const availableProducts: AvailableProduct[] = products.map(
   (product: any, index: number) => ({ ...product, count: product.count })
