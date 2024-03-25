@@ -42,33 +42,6 @@ export const products: Product[] = [
   },
 ];
 
-// async function fetchProducts() {
-//   try {
-//     const response = await fetch(
-//       "https://zq3zdypgs7.execute-api.eu-west-1.amazonaws.com/dev/products",
-//       {
-//         headers: {
-//           "Content-Type": "application/json",
-//         },
-//       }
-//     );
-
-//     if (response.ok) {
-//       const products = await response.json();
-//       console.log("products: ", products);
-//       return products;
-//     } else {
-//       throw new Error("Failed to fetch products");
-//     }
-//   } catch (error) {
-//     console.error("Error fetching products:", error);
-//     return [];
-//   }
-// }
-
-// export const products = await fetchProducts();
-// console.log(products);
-
 export const availableProducts: AvailableProduct[] = products.map(
   (product, index) => ({ ...product, count: index + 1 })
 );
