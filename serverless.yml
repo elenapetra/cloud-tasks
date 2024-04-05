@@ -57,11 +57,14 @@ resources:
           Ref: WebAppS3Bucket
         PolicyDocument:
           Statement:
-            - Sid: "1"
-              Effect: Allow
+            - Sid: "RestrictAccessToS3Bucket"
+              Effect: Deny
               Action: s3:GetObject
               Resource: arn:aws:s3:::${self:custom.s3BucketName}/*
               Principal: "*"
+              Condition:
+                StringNotEquals:
+                  AWS:UserAgent: "Amazon CloudFront"
             - Sid: "AllowCloudFrontAccessIdentity"
               Effect: Allow
               Action: s3:GetObject
